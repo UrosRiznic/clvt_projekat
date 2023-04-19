@@ -27,7 +27,9 @@ for index, row in data.iterrows():
     elif distribution == "normal":
         sample = np.random.normal(arg1, arg2, size=sample_size)
     end_time = time.time()
-    
+
+    #distributions = {'poisson': np.random.poisson, 'uniform': np.random.uniform, 'weibull': np.random.weibull, 'normal': np.random.normal}
+    #sample = distributions[distribution](*([arg1, arg2][:len(inspect.signature(distributions[distribution]).parameters)-2]), size=sample_size)
 
     start_time_2 = time.time()
     std = np.std(sample)
@@ -37,13 +39,6 @@ for index, row in data.iterrows():
     logging.info(f"Za red sa indeksom {index}: standardna devijacija = {std}, srednja vrednost = {mean}")
     logging.info(f"Trajanje procesa za red sa indeksom {index} - uzorak: {end_time - start_time:.4f}s, std i mean: {end_time_2 - start_time_2:.4f}s")
 
-
-end_time_entire_project = time.time()
-total_time_entire_project = end_time_entire_project - start_time_entire_project
-rounded_number = round(total_time_entire_project,4)
-finale_converted_time = str(rounded_number)
-print(type(finale_converted_time))
-print("Time of executing whole process is : ", finale_converted_time)
 
 def inserting_time_into_stats_table():
     conn = psycopg2.connect(host="localhost",database="db_project",user="postgres",password="uros")
@@ -63,7 +58,7 @@ def inserting_time_into_stats_table():
     cur.close()
     conn.close()
 
-inserting_time_into_stats_table()
+# inserting_time_into_stats_table()
 
 def update_sample_size():
     conn = psycopg2.connect(host="localhost",database="db_project",user="postgres",password="uros")
@@ -84,3 +79,9 @@ def update_sample_size():
     
     cur.close()
     conn.close()
+
+end_time_entire_project = time.time()
+total_time_entire_project = end_time_entire_project - start_time_entire_project
+rounded_number = round(total_time_entire_project,4)
+finale_converted_time = str(rounded_number)
+print("Time of executing whole process is : ", finale_converted_time)
