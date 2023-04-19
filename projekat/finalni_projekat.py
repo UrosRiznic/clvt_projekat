@@ -4,12 +4,14 @@ import logging
 import time
 import psycopg2
 from uuid import uuid4
+import os
 
 start_time_entire_project = time.time()
 
 logging.basicConfig(filename="rezultati.log", level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
-data = pd.read_csv("data.csv")
+csv_path = os.path.abspath('projekat/data.csv')
+data = pd.read_csv(csv_path)
 
 for index, row in data.iterrows():
     distribution = row["distribution"]

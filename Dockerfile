@@ -7,4 +7,4 @@ RUN pip install poetry && poetry config virtualenvs.create false && poetry insta
 
 COPY . .
 
-CMD ["poetry", "run", "python", "projekat/test3.py"]
+CMD ["poetry", "run", "python", "projekat/finalni_projekat.py"]
