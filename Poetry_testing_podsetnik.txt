@@ -70,3 +70,7 @@ Branch 		 - Koren iz master grane (radne verzije projekta).
 - git checkout -b new 		- Napravimo novu granu "new" i brebacimo se na nju. Tako da sve naredne promene koje izvrsimo, primenjuju se na tu granu a ne na master.
 	- git checkout master 	- Prebacivanje na master granu 
 - git merge master 			- Pod uslovom da se nalazimo u nekoj od grana, ova komanda spaja granu sa master granom (uradi sync)
+
+1) git add (ime fajla koji se dodaje)
+2) git commit -m "poruka"
+3) git push 
