@@ -62,11 +62,11 @@ Branch 		 - Koren iz master grane (radne verzije projekta).
 
 - git init 					- Pravi git repozitorijum od fajla u kome se nalazi (.git)
 - git add ime_fajla.py 		- Dodaje fajl u listu za commit .
-	- git add . 				- Dodaj SVE fajlove na kojima postoje promene u listu za commit.
+	- git add . 			- Dodaj SVE fajlove na kojima postoje promene u listu za commit.
 - git status 				- Prikazuje status grane u kojoj se nalazimo, kao i fajlove koje cekaju da budu commit-ovani.
 - git commit -m "Poruka..."	- Salje sve fajlove koji cekaju da budu poslati. Salje na granu u kojoj se nalazimo. 
 
 
 - git checkout -b new 		- Napravimo novu granu "new" i brebacimo se na nju. Tako da sve naredne promene koje izvrsimo, primenjuju se na tu granu a ne na master.
-	- git checkout master 		- Prebacivanje na master granu 
+	- git checkout master 	- Prebacivanje na master granu 
 - git merge master 			- Pod uslovom da se nalazimo u nekoj od grana, ova komanda spaja granu sa master granom (uradi sync)
