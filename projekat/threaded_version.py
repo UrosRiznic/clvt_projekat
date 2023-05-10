@@ -34,6 +34,12 @@ def process_row(row):
     log_msg = f"Row: {row}, Mean: {mean}, Standard deviation: {std_dev}, Time elapsed: {elapsed_time:.6f} seconds"
     logging.info(log_msg)
 
+"""
+- Funkcija kao argument uzima niz redova
+- Prolazi kroz svaki red i od svakog reda pravi jednu nit
+- zatim je pokrece i dodaju u listu niti (t.start i threads.append(t))
+- potom ceka da se sve niti zavrse (t.join)
+"""
 def process_rows_parallel(rows):
     threads = []
 
