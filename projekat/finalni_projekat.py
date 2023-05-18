@@ -43,6 +43,10 @@ for index, row in data.iterrows():
 
 
 def inserting_time_into_stats_table():
+    ''' 
+    This is function that creates new table Stats if it doesnt exist and 
+    inserts time of execution of whole program.
+    '''
     conn = psycopg2.connect(host="localhost",database="db_project",user="postgres",password="uros")
     cur = conn.cursor()
 
@@ -63,6 +67,10 @@ def inserting_time_into_stats_table():
 # inserting_time_into_stats_table()
 
 def update_sample_size():
+    ''' 
+    This is function that updates row "sample_size" from database.
+    If the row is equal to 1000, it updates it to 100000 and if its 100000 it updates to 1000.
+    '''
     conn = psycopg2.connect(host="localhost",database="db_project",user="postgres",password="uros")
     cur = conn.cursor()
     cur.execute("SELECT sample_size FROM db_table")

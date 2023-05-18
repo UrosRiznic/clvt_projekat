@@ -10,6 +10,11 @@ start_time_entire_project = time.time()
 logging.basicConfig(filename='sample.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
 def process_row(row):
+    '''
+    Function that takes one argument (row)
+    It names rows and depending on distribution, it generates sample data
+    And from that data sample, it calculates Mean and Standard Deviaton.
+    '''
     distribution = row[0]
     sample_size = int(row[1])
     arg1 = float(row[2]) if row[2] else None
@@ -34,13 +39,14 @@ def process_row(row):
     log_msg = f"Row: {row}, Mean: {mean}, Standard deviation: {std_dev}, Time elapsed: {elapsed_time:.6f} seconds"
     logging.info(log_msg)
 
-"""
-- Funkcija kao argument uzima niz redova
-- Prolazi kroz svaki red i od svakog reda pravi jednu nit
-- zatim je pokrece i dodaju u listu niti (t.start i threads.append(t))
-- potom ceka da se sve niti zavrse (t.join)
-"""
+
 def process_rows_parallel(rows):
+    '''
+    Function takes array of lines
+    It iterates thrue every row and from each row it makes a thread
+    Then it runs it and adds it to array of Threads (t.start and threads.append(t))
+    Then it waits for every thread to finish with t.join
+    '''
     threads = []
 
     for row in rows:
@@ -64,6 +70,10 @@ logging.info(f"Total elapsed time: {elapsed_time:.6f} seconds")
 
 
 def inserting_time_into_stats_table():
+    ''' 
+    This is function that creates new table Stats if it doesnt exist and 
+    inserts time of execution of whole program.
+    '''
     conn = psycopg2.connect(host="localhost",database="db_project",user="postgres",password="uros")
     cur = conn.cursor()
 
@@ -84,6 +94,10 @@ def inserting_time_into_stats_table():
 # inserting_time_into_stats_table()
 
 def update_sample_size():
+    ''' 
+    This is function that updates row "sample_size" from database.
+    If the row is equal to 1000, it updates it to 100000 and if its 100000 it updates to 1000.
+    '''
     conn = psycopg2.connect(host="localhost",database="db_project",user="postgres",password="uros")
     cur = conn.cursor()
     cur.execute("SELECT sample_size FROM db_table")
